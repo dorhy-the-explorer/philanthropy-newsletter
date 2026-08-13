@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 자선재원 흐름과 향후 전략 | ClimateWorks & Ariadne</title>
+  <style>
+    :root{
+      --bg:#f4f1ea;
+      --paper:#ffffff;
+      --ink:#17332d;
+      --muted:#66736f;
+      --line:#d9dfdc;
+      --accent:#2f6b5b;
+      --accent-soft:#e9f2ee;
+      --warm:#b86b3f;
+      --warm-soft:#f7ece5;
+      --dark:#193b33;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family: "Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;
+      line-height:1.75;
+    }
+
+    .toolbar{
+      position:sticky;
+      top:0;
+      z-index:10;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      padding:10px 16px;
+      background:rgba(244,241,234,.96);
+      border-bottom:1px solid #ddd6cb;
+      backdrop-filter: blur(8px);
+    }
+
+    .toolbar button{
+      border:0;
+      border-radius:999px;
+      padding:9px 14px;
+      font-weight:700;
+      cursor:pointer;
+      background:var(--dark);
+      color:#fff;
+    }
+
+    .toolbar .secondary{
+      background:#fff;
+      color:var(--dark);
+      border:1px solid var(--line);
+    }
+
+    .wrap{
+      width:min(900px, calc(100% - 28px));
+      margin:26px auto 56px;
+      background:var(--paper);
+      box-shadow:0 14px 45px rgba(38,54,49,.08);
+    }
+
+    header{
+      padding:56px 54px 44px;
+      background:linear-gradient(140deg,#173b33 0%,#2f6b5b 100%);
+      color:#fff;
+    }
+
+    .eyebrow{
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:.78;
+      margin-bottom:12px;
+    }
+
+    h1{
+      margin:0 0 18px;
+      font-size:40px;
+      line-height:1.25;
+      letter-spacing:-.03em;
+    }
+
+    .dek{
+      margin:0;
+      max-width:720px;
+      font-size:18px;
+      color:rgba(255,255,255,.88);
+    }
+
+    .meta{
+      margin-top:22px;
+      font-size:13px;
+      color:rgba(255,255,255,.7);
+    }
+
+    main{padding:44px 54px 56px}
+
+    .intro{
+      font-size:18px;
+      padding-bottom:34px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .headline-box{
+      margin:28px 0 38px;
+      padding:24px 26px;
+      border-radius:16px;
+      background:var(--accent-soft);
+      border:1px solid #d5e5de;
+    }
+
+    .headline-box strong{
+      display:block;
+      font-size:22px;
+      margin-bottom:6px;
+    }
+
+    .section{
+      margin-top:54px;
+    }
+
+    .section-number{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--dark);
+      color:white;
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    h2{
+      font-size:30px;
+      line-height:1.35;
+      margin:0 0 18px;
+      letter-spacing:-.025em;
+    }
+
+    h3{
+      margin:30px 0 10px;
+      font-size:21px;
+      line-height:1.45;
+      letter-spacing:-.015em;
+    }
+
+    p{margin:0 0 16px}
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin:22px 0 26px;
+    }
+
+    .card{
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+    }
+
+    .card .num{
+      font-size:28px;
+      font-weight:900;
+      color:var(--accent);
+      line-height:1.2;
+      margin-bottom:8px;
+    }
+
+    .card .label{
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    ul{
+      margin:10px 0 18px;
+      padding-left:22px;
+    }
+
+    li{margin-bottom:8px}
+
+    .quote{
+      margin:26px 0;
+      padding:22px 24px;
+      border-left:5px solid var(--warm);
+      background:var(--warm-soft);
+      font-size:18px;
+      font-weight:700;
+    }
+
+    .takeaway{
+      margin-top:28px;
+      padding:22px 24px;
+      border-radius:14px;
+      background:#f7f8f7;
+      border:1px solid var(--line);
+    }
+
+    .takeaway b{
+      color:var(--dark);
+    }
+
+    .compare{
+      margin-top:30px;
+      overflow-x:auto;
+      border:1px solid var(--line);
+      border-radius:14px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:720px;
+      font-size:14px;
+    }
+
+    th,td{
+      padding:15px 16px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:top;
+    }
+
+    th{
+      background:#f2f5f3;
+      font-weight:800;
+    }
+
+    tr:last-child td{border-bottom:0}
+
+    .final-message{
+      margin-top:38px;
+      padding:30px;
+      background:var(--dark);
+      color:#fff;
+      border-radius:18px;
+    }
+
+    .final-message h3{
+      margin-top:0;
+      color:#fff;
+    }
+
+    .sources{
+      margin-top:50px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .sources a{
+      color:var(--accent);
+      word-break:break-all;
+    }
+
+    .edit-note{
+      margin:0 auto 18px;
+      width:min(900px, calc(100% - 28px));
+      font-size:12px;
+      color:#5f675f;
+    }
+
+    [contenteditable="true"]:focus{
+      outline:2px dashed #6a9a8b;
+      outline-offset:4px;
+      border-radius:4px;
+    }
+
+    @media (max-width:720px){
+      header, main{padding-left:24px;padding-right:24px}
+      header{padding-top:40px}
+      h1{font-size:31px}
+      h2{font-size:25px}
+      .card-grid{grid-template-columns:1fr}
+      .toolbar{justify-content:flex-start;overflow:auto}
+    }
+
+    @media print{
+      body{background:#fff}
+      .toolbar,.edit-note{display:none}
+      .wrap{box-shadow:none;width:100%;margin:0}
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="downloadEditedHTML()">수정본 HTML 저장</button>
+    <button class="secondary" onclick="window.print()">인쇄 / PDF 저장</button>
+  </div>
+
+  <div class="edit-note">
+    아래 뉴스레터 본문을 클릭하면 문구를 바로 수정할 수 있습니다. 수정이 끝나면 상단의 <b>‘수정본 HTML 저장’</b> 버튼을 눌러 파일로 다시 저장하세요.
+  </div>
+
+  <article class="wrap">
+    <header contenteditable="true">
+      <div class="eyebrow">FUNDING & PHILANTHROPY BRIEF · 2026</div>
+      <h1>2026 자선재원은 어디로 가고,<br>앞으로 무엇이 달라져야 할까?</h1>
+      <p class="dek">
+        ClimateWorks의 기후재원 흐름 분석과 Ariadne의 자선재단 전략 전망을 함께 읽으며,
+        2026년 자선재원 분야의 공통 흐름을 정리했습니다.
+      </p>
+      <div class="meta">두 보고서 핵심 요약 · ClimateWorks Funding Trends 2026 / Ariadne Forecast 2026</div>
+    </header>
+
+    <main contenteditable="true">
+      <section class="intro">
+        <p>
+          두 보고서는 서로 다른 분야를 다루지만 결론은 놀랄 만큼 비슷합니다.
+          단순히 <b>“더 많은 돈”</b>을 투입하는 것보다,
+          <b>어떤 방식으로, 누구에게, 얼마나 유연하고 장기적으로 자금을 전달할 것인지</b>가
+          점점 더 중요해지고 있다는 점입니다.
+        </p>
+      </section>
+
+      <div class="headline-box">
+        <strong>한눈에 보는 핵심 메시지</strong>
+        기후 분야에서는 자선재원이 빠르게 늘고 있지만 세계 남반구(Global South)에 충분히 도달하지 못하고 있으며,
+        사회변화 분야에서는 시민사회 공간의 축소와 정치·사회적 불확실성에 대응하기 위해
+        장기적이고 유연하며 위험을 감수할 수 있는 자금지원 방식이 요구되고 있습니다.
+      </div>
+
+      <section class="section">
+        <span class="section-number">01</span>
+        <h2>ClimateWorks: 기후 자선재원은 크게 늘었지만, 지역 편중은 더 뚜렷해졌다</h2>
+
+        <p>
+          ClimateWorks의 <b>「Funding Trends 2026」</b>은 전 세계
+          <b>기후변화 완화(climate mitigation)</b> 분야의 자선재원 흐름을 분석한 보고서입니다.
+          가장 최근의 완전한 정량자료는 2024년까지이며, 재단과 개인 기부를 포함한 전체 규모를 추정하고
+          재단 자금은 지역·분야·지원전략별로 더 상세하게 살펴봅니다.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="num">117억~184억 달러</div>
+            <div class="label">2024년 전 세계 기후변화 완화 분야 자선재원 추정 규모</div>
+          </div>
+          <div class="card">
+            <div class="num">약 60억 달러</div>
+            <div class="label">2024년 재단의 기후변화 완화 분야 지원 규모</div>
+          </div>
+          <div class="card">
+            <div class="num">2배 이상</div>
+            <div class="label">2020년 대비 2024년 재단 기후자금 증가 폭</div>
+          </div>
+          <div class="card">
+            <div class="num">70% 이상</div>
+            <div class="label">국가·지역 지정형 재단 기후자금 중 미국과 유럽에 집중된 비중</div>
+          </div>
+        </div>
+
+        <h3>1) 기후자금 자체는 빠르게 증가하고 있다</h3>
+        <p>
+          경제적·지정학적 불확실성에도 불구하고 기후 분야 자선재원은 위축되지 않았습니다.
+          2024년에는 전체 자선재원 중 기후변화 완화 분야가 차지하는 비중이 처음으로 2%를 넘어섰고,
+          재단 지원도 2020년 이후 두 배 이상 확대되었습니다.
+        </p>
+
+        <h3>2) 그러나 자금의 상당 부분은 여전히 미국과 유럽에 머물고 있다</h3>
+        <p>
+          가장 큰 문제는 <b>세계 남반구(Global South) 자금격차</b>입니다.
+          특정 국가나 지역을 대상으로 한 재단의 기후자금 가운데 70% 이상이 미국과 유럽으로 향했고,
+          아프리카·아시아·중남미 등 기후위험과 개발수요가 큰 지역의 비중은 상대적으로 낮았습니다.
+        </p>
+
+        <p>보고서는 이러한 격차의 원인을 단순한 관심 부족만으로 보지 않습니다.</p>
+        <ul>
+          <li>익숙하지 않은 지역에 대한 실사(due diligence) 역량 부족</li>
+          <li>현지 수혜기관(grantee) 발굴 기반 부족</li>
+          <li>재단 이사회 차원의 지원지역 제한</li>
+          <li>국경을 넘는 지원에 따른 규제준수(compliance) 비용</li>
+          <li>현지 기관의 자금흡수역량(absorptive capacity)에 대한 우려</li>
+        </ul>
+
+        <p>
+          따라서 개별 단체에 보조금을 늘리는 것뿐 아니라,
+          <b>현지 중개기관(intermediary), 지역 기후재단, 현지 파트너 등 자금이 현장까지 흘러갈 수 있는 전달 기반</b>을
+          함께 키워야 한다고 제안합니다.
+        </p>
+
+        <h3>3) 기후대응은 점점 ‘개발’과 함께 설명되고 있다</h3>
+        <p>
+          가장 많은 자금이 들어가는 분야는 청정전력(Clean Electricity)이지만,
+          최근에는 식량안보, 경제성장, 일자리, 회복력(resilience)과 기후대응을 함께 묶는 흐름도 두드러집니다.
+          특히 아프리카의 식량·농업 분야 지원이 빠르게 늘어난 점은 이러한 변화를 보여주는 사례입니다.
+        </p>
+
+        <div class="quote">
+          앞으로의 기후사업은 “얼마나 탄소를 줄였는가”뿐 아니라
+          “기후대응을 통해 식량안보·일자리·경제성장·회복력을 어떻게 함께 높였는가”를 보여주는 것이 중요해지고 있습니다.
+        </div>
+
+        <h3>4) ClimateWorks가 제시하는 향후 네 가지 방향</h3>
+        <ul>
+          <li><b>기후자금 총량 확대:</b> 자선재원을 활용해 더 큰 공공·민간·다자개발은행 자금을 촉진하는 촉매적 역할(catalytic role) 강화</li>
+          <li><b>세계 남반구 지원 확대:</b> 현지 중개기관과 지역 파트너를 육성해 구조적 자금장벽 완화</li>
+          <li><b>기후와 개발의 통합:</b> 경제성장·일자리·식량안보·회복력과 기후성과를 함께 만드는 사업에 투자</li>
+          <li><b>장기적·유연한 자금 확대:</b> 단기 사업비 중심을 넘어 다년도(multi-year)·용도제한이 적은 유연한 지원 강화</li>
+        </ul>
+
+        <div class="takeaway">
+          <b>한 문장 요약:</b>
+          기후 자선재원은 기록적으로 증가하고 있지만 세계 남반구에는 충분히 도달하지 못하고 있으며,
+          앞으로는 현지 주도형 기후·개발 해법에 더 장기적이고 유연한 자금을 제공하면서
+          더 큰 공공·민간재원을 끌어내는 구조가 중요해지고 있습니다.
+        </div>
+      </section>
+
+      <section class="section">
+        <span class="section-number">02</span>
+        <h2>Ariadne: 불확실성의 시대, 자선재단은 ‘지원자’에서 ‘생태계의 버팀목’으로</h2>
+
+        <p>
+          Ariadne의 <b>「Forecast 2026」</b>은 자금규모를 분석한 보고서가 아니라,
+          유럽의 사회변화·인권 분야 자선재단이 앞으로 약 10년 동안 어떤 정치·사회적 환경에 놓일지,
+          그리고 이에 어떻게 대비해야 하는지를 다룬 <b>전략적 미래전망(strategic foresight)</b> 보고서입니다.
+        </p>
+
+        <p>
+          프랑스·독일·영국을 중심으로 약 130명의 자선재단·시민사회 관계자가 참여한 워크숍,
+          설문과 시나리오 기획(scenario planning)을 바탕으로 작성되었습니다.
+        </p>
+
+        <h3>1) 가장 큰 문제의식: 시민사회 공간이 줄면 자선활동의 공간도 줄어든다</h3>
+        <p>
+          민주주의 후퇴, 정치적 양극화, 권위주의 강화, 허위정보(disinformation),
+          시민사회 옹호활동(advocacy)에 대한 규제가 NGO뿐 아니라 재단의 활동에도 영향을 미친다고 봅니다.
+          법적·규제적 감시, 평판 위험, 지원제한이 커질수록 재단과 시민사회 모두에서
+          자기검열(self-censorship)이 나타날 수 있다는 점도 지적합니다.
+        </p>
+
+        <h3>2) 앞으로의 주요 위험</h3>
+        <ul>
+          <li>민주주의 후퇴와 권위주의, 시민사회 공간 축소</li>
+          <li>민주주의 제도에 대한 신뢰 하락</li>
+          <li>시민사회와 자선재단에 대한 규제·재정환경 악화</li>
+          <li>전쟁과 지정학적 갈등</li>
+          <li>기후변화</li>
+          <li>규제되지 않은 인공지능(AI)의 발전</li>
+          <li>허위정보와 정보생태계의 왜곡</li>
+          <li>불평등 심화</li>
+        </ul>
+
+        <p>
+          특히 민주주의 후퇴를 일시적 사건이 아니라 <b>구조적 변화</b>로 보고,
+          단기적인 대응보다 장기적인 대비가 필요하다고 강조합니다.
+        </p>
+
+        <h3>3) 인공지능과 정보생태계가 새로운 핵심 과제로 부상</h3>
+        <p>
+          인공지능은 단순한 신규 지원분야가 아니라,
+          허위정보 확대, 감시, 언론환경의 왜곡, 사회적 양극화를 가속할 수 있는 구조적 변수로 다뤄집니다.
+          따라서 자선재단은 다음과 같은 기반을 지원할 필요가 있다고 봅니다.
+        </p>
+
+        <ul>
+          <li>독립언론과 대안적 미디어 생태계</li>
+          <li>시민교육과 디지털 이해역량</li>
+          <li>윤리적 디지털 기반</li>
+          <li>긍정적인 민주주의 서사(narrative)</li>
+        </ul>
+
+        <div class="quote">
+          단순히 부정적 흐름에 대응하는 ‘방어적 지원’만으로는 충분하지 않습니다.
+          사람들이 지지할 수 있는 긍정적이고 설득력 있는 미래상을 함께 만들어야 한다는 것이 보고서의 중요한 메시지입니다.
+        </div>
+
+        <h3>4) 무엇에 지원할 것인가: 개별 사업보다 시민사회 생태계의 회복력</h3>
+        <p>
+          Ariadne는 개별 NGO의 사업비만 지원하는 방식에서 벗어나,
+          <b>시민사회 생태계 전체의 회복력(resilience)</b>을 높이는 지원이 필요하다고 주장합니다.
+        </p>
+
+        <ul>
+          <li>법률보호와 전략적 소송</li>
+          <li>디지털·물리적 보안</li>
+          <li>직원 안녕과 소진 예방</li>
+          <li>인사·회계·예산·재무계획 등 조직 기반역량</li>
+          <li>지역사회 기반시설</li>
+          <li>지역사회 조직화와 연대체 구축</li>
+          <li>운동·네트워크의 협업 역량</li>
+          <li>옹호활동 역량</li>
+        </ul>
+
+        <h3>5) 어떻게 지원할 것인가: 느리고 경직된 지원에서 벗어나기</h3>
+        <p>
+          보고서는 “무엇을 지원하느냐”만큼 “어떻게 지원하느냐”가 중요하다고 강조합니다.
+          위기가 커질수록 재단은 위험관리를 강화하는 경향이 있지만,
+          정작 현장에 필요한 것은 더 빠르고 유연한 지원이라는 역설이 존재합니다.
+        </p>
+
+        <ul>
+          <li>장기적·유연한 자금(long-term and flexible funding)</li>
+          <li>참여형 지원결정(participatory grantmaking)</li>
+          <li>행정·보고 부담 축소</li>
+          <li>더 빠른 자금집행</li>
+          <li>중개기관과 공동기금 활용</li>
+          <li>신뢰 기반의 지원(trust-based funding)</li>
+          <li>위험을 감수할 수 있는 지원방식(risk-tolerant funding)</li>
+        </ul>
+
+        <h3>6) 사후대응형에서 선제대응형 자선활동으로</h3>
+        <p>
+          문제가 발생한 뒤 긴급지원을 제공하는 것만으로는 부족하며,
+          앞으로 무엇이 일어날 수 있는지 예측하고 미리 준비하는
+          <b>선제적 자선활동(proactive philanthropy)</b>이 필요하다고 봅니다.
+        </p>
+
+        <ul>
+          <li>시나리오 기획</li>
+          <li>전략적 미래전망</li>
+          <li>선거 전후 위험 대비</li>
+          <li>장기적 사회서사 투자</li>
+          <li>여러 정치적 미래를 고려한 조직 회복력 계획</li>
+        </ul>
+
+        <h3>7) 위험을 없애는 것이 아니라, 위험 속에서도 행동할 수 있어야 한다</h3>
+        <p>
+          보고서는 위험관리의 목적을 “재단의 노출을 최소화하는 것”이 아니라,
+          <b>상황이 악화되어도 수혜기관을 계속 지원할 수 있는 행동능력을 유지하는 것</b>으로 재정의합니다.
+        </p>
+
+        <p>
+          이를 위해 재단이 위험수용수준(risk appetite)을 명확히 하고,
+          혼자 감당하기 어려운 영역은 공동기금(pooled fund), 중개기관,
+          공동 재지원체계(collaborative regranting) 등을 활용해 위험을 분산할 것을 제안합니다.
+        </p>
+
+        <div class="takeaway">
+          <b>한 문장 요약:</b>
+          민주주의 후퇴와 시민사회 공간 축소, 인공지능·허위정보, 갈등과 기후위기가 동시에 진행되는 상황에서
+          자선재단은 단순한 보조금 제공자를 넘어 장기적이고 유연하며 위험을 감수할 수 있는 자금을 통해
+          시민사회 생태계 전체의 회복력과 협업역량을 키우는 역할을 해야 합니다.
+        </div>
+      </section>
+
+      <section class="section">
+        <span class="section-number">03</span>
+        <h2>두 보고서를 함께 읽으면 보이는 2026년의 공통 흐름</h2>
+
+        <div class="compare">
+          <table>
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>ClimateWorks</th>
+                <th>Ariadne</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>주요 분야</td>
+                <td>기후변화 완화 분야 자선재원</td>
+                <td>인권·사회변화 분야 자선재단</td>
+              </tr>
+              <tr>
+                <td>보고서 성격</td>
+                <td>실제 자금흐름 데이터 분석</td>
+                <td>미래전망과 전략방향 제시</td>
+              </tr>
+              <tr>
+                <td>핵심 문제</td>
+                <td>세계 남반구로 자금이 충분히 가지 않음</td>
+                <td>시민사회와 자선활동 공간이 위축됨</td>
+              </tr>
+              <tr>
+                <td>기존 지원방식의 한계</td>
+                <td>세계 북반구 중심의 자금편중</td>
+                <td>분절적이고 느리며 위험회피적인 지원</td>
+              </tr>
+              <tr>
+                <td>현지화(localisation)</td>
+                <td>현지 중개기관과 지역 파트너 강화</td>
+                <td>지역사회와 현지 생태계 기반 지원 강화</td>
+              </tr>
+              <tr>
+                <td>자금지원 방식</td>
+                <td>다년도·유연한 자금 강조</td>
+                <td>장기적·유연하고 신뢰 기반의 자금 강조</td>
+              </tr>
+              <tr>
+                <td>생태계 접근</td>
+                <td>현지 자금전달 기반과 기관역량</td>
+                <td>시민사회·운동·네트워크 기반</td>
+              </tr>
+              <tr>
+                <td>자선재원의 역할</td>
+                <td>더 큰 공공·민간자금을 촉진하는 촉매</td>
+                <td>시민사회의 회복력과 집단적 역량을 키우는 촉매</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="final-message">
+          <h3>결국 중요한 것은 ‘더 많은 돈’보다 ‘더 나은 자금구조’</h3>
+          <p>
+            두 보고서가 공통적으로 보여주는 방향은 분명합니다.
+            앞으로의 자선재원은 <b>현지 주도형, 장기적, 유연한, 위험을 감수할 수 있는, 협업형 지원</b>으로 이동하고 있습니다.
+          </p>
+          <p>
+            개별 사업의 단기 성과만 구매하는 방식에서 벗어나,
+            조직·네트워크·중개기관·지역사회·제도 등
+            <b>문제를 지속적으로 해결할 수 있는 생태계 자체에 투자하는 것</b>이
+            2026년 이후 자선재원 전략의 핵심 흐름으로 보입니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="sources">
+        <b>원문 보고서</b><br><br>
+        ClimateWorks, Funding Trends 2026<br>
+        <a href="https://content.climateworks.org/funding-trends-2026" target="_blank">https://content.climateworks.org/funding-trends-2026</a>
+        <br><br>
+        Ariadne, Forecast 2026<br>
+        <a href="https://www.ariadne-network.eu/wp-content/uploads/2026/07/AriadneForecast2026.pdf" target="_blank">https://www.ariadne-network.eu/wp-content/uploads/2026/07/AriadneForecast2026.pdf</a>
+      </section>
+    </main>
+  </article>
+
+  <script>
+    function downloadEditedHTML(){
+      const clone = document.documentElement.cloneNode(true);
+      const toolbar = clone.querySelector('.toolbar');
+      const note = clone.querySelector('.edit-note');
+      if (toolbar) toolbar.remove();
+      if (note) note.remove();
+
+      clone.querySelectorAll('[contenteditable="true"]').forEach(el => {
+        el.setAttribute('contenteditable','true');
+      });
+
+      const blob = new Blob(['<!DOCTYPE html>\n' + clone.outerHTML], {type:'text/html;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '2026_philanthropy_funding_newsletter_edited.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
